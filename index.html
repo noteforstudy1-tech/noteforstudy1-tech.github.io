@@ -238,6 +238,31 @@
             font-size: 1.5rem;
         }
 
+        /* --- Filter Buttons --- */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 0 5% 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--dark-pink);
+            color: var(--dark-pink);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--dark-pink);
+            color: white;
+        }
+
         /* --- Gallery Sections --- */
         .section-title {
             text-align: center;
@@ -261,6 +286,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
+            min-height: 400px;
         }
 
         .gallery-item {
@@ -268,6 +294,13 @@
             border-radius: 15px;
             height: 400px;
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item.hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
         }
 
         .gallery-item img {
@@ -279,6 +312,125 @@
 
         .gallery-item:hover img {
             transform: scale(1.15);
+        }
+
+        /* --- Floating WhatsApp Button --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials {
+            padding: 80px 5%;
+            background: rgba(255, 255, 255, 0.4);
+            margin: 40px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-pink);
+            position: relative;
+        }
+
+        .testimonial-card i {
+            font-size: 2rem;
+            color: var(--soft-pink);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .testimonial-card h4 {
+            color: var(--dark-pink);
+            font-weight: 600;
+        }
+
+        /* --- Stitching & Care Guide --- */
+        .care-guide {
+            padding: 80px 10%;
+            background-color: rgba(255, 255, 255, 0.6);
+            margin: 40px 0;
+            border-radius: 30px;
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .care-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .care-icon {
+            font-size: 2.5rem;
+            color: var(--dark-pink);
+            background: var(--white);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+
+        .care-content h3 {
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* --- Reveal Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* --- Store Exteriors --- */
@@ -482,6 +634,12 @@
             .exterior-img {
                 height: 350px;
             }
+            .floating-wa {
+                bottom: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         /* --- Lightbox / Image Enlarge --- */
@@ -534,6 +692,11 @@
         <img src="" alt="Enlarged View">
     </div>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919753834831?text=Hi%20Paridhan%20Boutique,%20I'm%20interested%20in%20your%20collection%20and%20would%20like%20to%20book%20a%20fitting." class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i> Enquire Now
+    </a>
+
     <!-- Navigation -->
     <nav>
         <div class="logo-container">
@@ -564,7 +727,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="about reveal" id="about">
         <div class="about-img">
             <img src="owner1.png" alt="Sapna Parashar - Owner">
         </div>
@@ -576,7 +739,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="services reveal" id="services">
         <h2 class="section-title">What We Offer</h2>
         <p style="font-size: 1.2rem; margin-top: -20px; color: #666;">Our Specialities</p>
         <div class="services-grid">
@@ -608,24 +771,70 @@
         </div>
     </section>
 
+    <!-- Stitching & Care Guide -->
+    <section class="care-guide reveal" id="care">
+        <h2 class="section-title">Stitching & Care Guide</h2>
+        <div class="care-grid">
+            <div class="care-item">
+                <span class="care-icon"><i class="fas fa-cut"></i></span>
+                <div class="care-content">
+                    <h3>Custom Blouse Stitching</h3>
+                    <p>Perfect fit guaranteed. We specialize in intricate back designs, padded blouses, and modern cuts tailored to your measurements.</p>
+                </div>
+            </div>
+            <div class="care-item">
+                <span class="care-icon"><i class="fas fa-magic"></i></span>
+                <div class="care-content">
+                    <h3>Fabric Care Tips</h3>
+                    <p>Keep your ethnic wear timeless: Gentle dry clean only for silks and heavy embroidery. Store in muslin bags to prevent tarnishing.</p>
+                </div>
+            </div>
+            <div class="care-item">
+                <span class="care-icon"><i class="fas fa-hand-holding-heart"></i></span>
+                <div class="care-content">
+                    <h3>Styling Consultation</h3>
+                    <p>Not sure what looks best? Get free styling advice and fabric selection help with every order from Mrs. Sapna herself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Latest Collection Gallery -->
-    <h2 class="section-title" id="collection">Our Latest Collection</h2>
-    <div class="gallery-container">
+    <h2 class="section-title reveal" id="collection">Our Latest Collection</h2>
+    
+    <div class="filter-buttons reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="sarees">Sarees</button>
+        <button class="filter-btn" data-filter="lehengas">Lehengas</button>
+        <button class="filter-btn" data-filter="suits">Suits</button>
+        <button class="filter-btn" data-filter="designer">Designer Wear</button>
+    </div>
+
+    <div class="gallery-container reveal" id="collectionGallery">
         <script>
             const container = document.currentScript.parentElement;
-            for(let i=1; i<=35; i++) {
-                container.innerHTML += `
-                    <div class="gallery-item">
-                        <img src="cloth${i}.png" alt="Collection Item ${i}" loading="lazy">
-                    </div>
-                `;
+            const categories = {
+                sarees: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                lehengas: [11, 12, 13, 14, 15, 16, 17, 18],
+                suits: [19, 20, 21, 22, 23, 24, 25, 26, 27],
+                designer: [28, 29, 30, 31, 32, 33, 34, 35]
+            };
+            
+            for(let category in categories) {
+                categories[category].forEach(i => {
+                    container.innerHTML += `
+                        <div class="gallery-item filter-item ${category}">
+                            <img src="cloth${i}.png" alt="Collection Item ${i}" loading="lazy">
+                        </div>
+                    `;
+                });
             }
         </script>
     </div>
 
     <!-- Interior Gallery -->
-    <h2 class="section-title" id="interior">Step Inside Our Boutique</h2>
-    <div class="gallery-container">
+    <h2 class="section-title reveal" id="interior">Step Inside Our Boutique</h2>
+    <div class="gallery-container reveal">
         <script>
             const interiorContainer = document.currentScript.parentElement;
             for(let i=1; i<=19; i++) {
@@ -639,8 +848,8 @@
     </div>
 
     <!-- Store Exteriors -->
-    <h2 class="section-title">Visit Our Store</h2>
-    <div class="store-exteriors">
+    <h2 class="section-title reveal">Visit Our Store</h2>
+    <div class="store-exteriors reveal">
         <div class="exterior-img">
             <img src="boutique exterior1.png" alt="Paridhan Boutique Exterior 1">
         </div>
@@ -649,8 +858,30 @@
         </div>
     </div>
 
+    <!-- Customer Testimonials -->
+    <section class="testimonials reveal" id="testimonials">
+        <h2 class="section-title">Customer Stories</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"The best boutique in Gwalior! My bridal lehenga was exactly how I imagined. The attention to detail is simply unmatched."</p>
+                <h4>- Ritu S.</h4>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Perfect fitting and very timely delivery. Highly recommended for custom blouses. They really listen to your requirements."</p>
+                <h4>- Anjali P.</h4>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Love their collection! Mrs. Sapna has an amazing eye for detail and always suggests the best styles for my personality."</p>
+                <h4>- Megha T.</h4>
+            </div>
+        </div>
+    </section>
+
     <!-- Instagram Section -->
-    <section class="instagram-section">
+    <section class="instagram-section reveal">
         <h2 class="section-title">Follow Our Journey</h2>
         <div class="insta-feed">
             <p style="font-size: 1.1rem; max-width: 600px;">Stay updated with our latest designs, bridal transformations, and behind-the-scenes moments on Instagram!</p>
@@ -716,6 +947,43 @@
                 menuToggle.classList.remove('active');
             });
         });
+
+        // Gallery Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const filterItems = document.querySelectorAll('.filter-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                filterItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.classList.add('hidden'), 400);
+                    }
+                });
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealItems = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealItems.forEach(item => revealObserver.observe(item));
 
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
