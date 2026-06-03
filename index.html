@@ -711,6 +711,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#collection">Collection</a></li>
             <li><a href="#interior">Interior</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle">
@@ -802,32 +803,15 @@
     <!-- Latest Collection Gallery -->
     <h2 class="section-title reveal" id="collection">Our Latest Collection</h2>
     
-    <div class="filter-buttons reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="sarees">Sarees</button>
-        <button class="filter-btn" data-filter="lehengas">Lehengas</button>
-        <button class="filter-btn" data-filter="suits">Suits</button>
-        <button class="filter-btn" data-filter="designer">Designer Wear</button>
-    </div>
-
-    <div class="gallery-container reveal" id="collectionGallery">
+    <div class="gallery-container reveal">
         <script>
             const container = document.currentScript.parentElement;
-            const categories = {
-                sarees: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                lehengas: [11, 12, 13, 14, 15, 16, 17, 18],
-                suits: [19, 20, 21, 22, 23, 24, 25, 26, 27],
-                designer: [28, 29, 30, 31, 32, 33, 34, 35]
-            };
-            
-            for(let category in categories) {
-                categories[category].forEach(i => {
-                    container.innerHTML += `
-                        <div class="gallery-item filter-item ${category}">
-                            <img src="cloth${i}.png" alt="Collection Item ${i}" loading="lazy">
-                        </div>
-                    `;
-                });
+            for(let i=1; i<=35; i++) {
+                container.innerHTML += `
+                    <div class="gallery-item">
+                        <img src="cloth${i}.png" alt="Collection Item ${i}" loading="lazy">
+                    </div>
+                `;
             }
         </script>
     </div>
