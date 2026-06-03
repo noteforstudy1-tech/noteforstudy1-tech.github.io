@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paridhan Boutique - आओ कुछ अलग पहनें</title>
+    
+    <!-- SEO & Open Graph Tags -->
+    <meta property="og:title" content="Paridhan Boutique - आओ कुछ अलग पहनें">
+    <meta property="og:description" content="Premium Designer Wear & Custom Stitching in Gwalior. Established 2012.">
+    <meta property="og:image" content="boutique logo.png">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Premium Designer Wear & Custom Stitching in Gwalior. Established 2012.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="boutique logo.png">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -314,7 +325,7 @@
             transform: scale(1.15);
         }
 
-        /* --- Floating WhatsApp Button --- */
+        /* --- Floating Buttons --- */
         .floating-wa {
             position: fixed;
             bottom: 30px;
@@ -336,6 +347,32 @@
         .floating-wa:hover {
             transform: scale(1.1);
             background-color: #128c7e;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--dark-pink);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        #backToTop:hover {
+            background-color: var(--pink-accent);
+            transform: translateY(-5px);
         }
 
         /* --- Testimonials Section --- */
@@ -543,7 +580,7 @@
             margin: 0 auto;
         }
 
-        .whatsapp-btn, .directions-btn {
+        .whatsapp-btn, .directions-btn, .insta-btn-footer {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -561,6 +598,15 @@
 
         .directions-btn { background-color: #4285F4; }
         .directions-btn:hover { background-color: #357ae8; transform: scale(1.05); }
+
+        .insta-btn-footer {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .insta-btn-footer:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
         .google-btn {
             display: inline-flex;
@@ -609,8 +655,9 @@
                 text-align: center;
                 transition: 0.3s;
                 padding-top: 50px;
-                gap: 40px;
+                gap: 30px;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                overflow-y: auto;
             }
 
             .nav-links.active {
@@ -639,6 +686,15 @@
                 left: 20px;
                 padding: 10px 20px;
                 font-size: 0.9rem;
+                z-index: 1001;
+            }
+            #backToTop {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                z-index: 1001;
             }
         }
 
@@ -692,10 +748,14 @@
         <img src="" alt="Enlarged View">
     </div>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating Buttons -->
     <a href="https://wa.me/919753834831?text=Hi%20Paridhan%20Boutique,%20I'm%20interested%20in%20your%20collection%20and%20would%20like%20to%20book%20a%20fitting." class="floating-wa" target="_blank">
         <i class="fab fa-whatsapp"></i> Enquire Now
     </a>
+
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Navigation -->
     <nav>
@@ -713,6 +773,7 @@
             <li><a href="#collection">Collection</a></li>
             <li><a href="#interior">Interior</a></li>
             <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#instagram">Follow Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle">
@@ -900,6 +961,9 @@
                 <a href="https://wa.me/919753834831" class="whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                 </a>
+                <a href="https://www.instagram.com/paridhan.1" class="insta-btn-footer" target="_blank">
+                    <i class="fab fa-instagram"></i> Follow on Instagram
+                </a>
                 <a href="https://share.google/Cw4yGbjs7pQeUmhd9" class="google-btn" target="_blank">
                     <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="Google" width="20">
                     Google Profile
@@ -911,11 +975,14 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2026 Paridhan Boutique. Founded in 2012 by Sapna Parashar. All Rights Reserved.</p>
+            <p>&copy; <span id="year"></span> Paridhan Boutique. Founded in 2012 by Sapna Parashar. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -933,27 +1000,21 @@
             });
         });
 
-        // Gallery Filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const filterItems = document.querySelectorAll('.filter-item');
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
 
-                const filter = btn.getAttribute('data-filter');
-
-                filterItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.classList.remove('hidden');
-                        setTimeout(() => item.style.opacity = '1', 10);
-                    } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => item.classList.add('hidden'), 400);
-                    }
-                });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
