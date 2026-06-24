@@ -865,12 +865,12 @@
     <!-- Latest Collection Gallery -->
     <h2 class="section-title reveal" id="collection">Our Latest Collection</h2>
     
-    <div class="gallery-container reveal">
+    <div class="gallery-container">
         <script>
             const container = document.currentScript.parentElement;
             for(let i=1; i<=35; i++) {
                 container.innerHTML += `
-                    <div class="gallery-item">
+                    <div class="gallery-item reveal">
                         <img src="cloth${i}.png" alt="Collection Item ${i}" loading="lazy">
                     </div>
                 `;
@@ -880,12 +880,12 @@
 
     <!-- Interior Gallery -->
     <h2 class="section-title reveal" id="interior">Step Inside Our Boutique</h2>
-    <div class="gallery-container reveal">
+    <div class="gallery-container">
         <script>
             const interiorContainer = document.currentScript.parentElement;
             for(let i=1; i<=19; i++) {
                 interiorContainer.innerHTML += `
-                    <div class="gallery-item">
+                    <div class="gallery-item reveal">
                         <img src="boutique interior${i}.png" alt="Interior View ${i}" loading="lazy">
                     </div>
                 `;
@@ -1027,7 +1027,7 @@
                     entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 });
 
         revealItems.forEach(item => revealObserver.observe(item));
 
